@@ -194,4 +194,4 @@
     removeDup(listSearch_child);
     $("#listApplications").click( function() { firstCond(); });
   });
-}) (jQuery);                                                                                
+}) (jQuery);
