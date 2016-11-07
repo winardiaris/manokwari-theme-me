@@ -1,0 +1,119 @@
+body {
+	background-color: transparent;
+	overflow: hidden;
+	-webkit-user-select: none;
+	padding: 0px;
+	margin: 0px;
+	font-family: Cantarell, Sans-Serif;
+}
+
+#sidebar-panel {
+	background-color: #111;
+	color: #aaa;
+	height: 100%;
+	width: 265px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	position:absolute;
+	z-index: 150;
+}
+
+.ui-animation-slide {
+    -webkit-transition: all 0.2s ease-in-out;
+}
+
+/* ** System setting *** */
+#gcc-datetime {
+	margin-top: 200px;
+	background-color: #222;
+	color: #eee;
+	height: auto;
+	width: 100%;
+	text-align: center;
+	padding: 5px;
+	box-shadow: 0 1px 0 #000;
+	cursor: pointer;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+#gcc-datetime:hover {
+	background-color: #333;
+	color: #fff;
+}
+#gcc-datetime span {
+	font-size: 12px;
+	font-family:'Ubuntu Condensed';
+}
+
+#lsb_panel {
+	margin-top: 0px;
+	padding: 10px 0px 0px 0;
+	background: transparent;
+	color:aaa;
+	height: 24px;
+	text-align:center;
+	cursor:default;
+	border-top: 1px solid #0a0a0a;
+	font-size: 14px;
+	font-family:'Ubuntu Condensed';
+}
+#lsb {
+	margin-top: 0px;
+	margin-left: 3px;
+	margin-bottom: 100px;
+	padding: 5px 0px;
+	background: transparent;
+	width: auto;
+	height: auto;
+	text-align:center;
+	overflow-y:hidden;
+	border-bottom: 0px solid #0a0a0a;
+  font-size:10pt !important;
+  text-align:left;
+  float:left;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/***********************
+ * Scrollbar *
+ * *********************/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
+    background: rgba(191,191,191,0);
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    background: rgba(191,191,191,0.04);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 0px;
+    background: rgba(191,191,191,0.1)
+}
+
+/***********************************
+ * Fonts Collections *
+ * *********************************/
+@font-face {
+    font-family: 'TrendexLightSSi.ttf';
+    src: url(../fonts/TrendexLightSSi.ttf);
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Aurulent Sans';
+    src: url(./fonts/AurulentSans-Regular.otf);
+    font-weight: 600;
+}
+@font-face {
+    font-family:'Ubuntu Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url('./fonts/ubuntu.woff') format('woff');
+}
