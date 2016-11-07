@@ -49,7 +49,9 @@
     // create and add the filter form to the header
     var form = $("<div>").attr({"class":"filterform"}),
         input = $("<input>").attr({"class":"filterinput","type":"text","id":"searchinput","placeholder":"Type to search..."});
+        runin = $("<div>").attr({"class":"runin"});
     $(form).append(input).appendTo(header);
+    $(form).append(runin).appendTo(header);
    
   
      $(input)
@@ -65,33 +67,33 @@
       //run applications
       var filter = $(this).val();
 			if (e.which == 13) {
-        if(filter.indexOf("!")>=0){
-          a=filter;
-          // wiki
-          if(a.indexOf("!w ")>=0 && a.length>=4){
-            str = a.replace("!w ","");
-            wiki = "https://id.wikipedia.org/wiki/"+str
-            visit_link(wiki);
-          }
           //reload manokwari
-          else if(a.indexOf("!r")>=0 && a.length==2){
+        if(filter.indexOf("!r")>=0 && filter.length==2){
             run_terminal("pkill manokwari");
-          }
-          //run in terminal
-          else{
-            str = a.replace("!","");
-            run_terminal(str);
-          }
-        }
-        //visit link
-        else if(isUrlValid(a)){
-          visit_link(a);
-          alert(a);
         }
         else{
+          p = $active.parent(); 
           $('span.active').parent().addClass('selected');
-          var a = $active.parent().attr('desktop');
-          Utils.run_desktop(a);
+          if(p.hasClass("runin-item-text")){
+            var r = p.attr("runin");
+            if(p.parent().hasClass("url")){
+              visit_link(r);
+            }
+            else if(p.parent().hasClass("search")){
+              var a = "https://www.google.com/search?q="+r;
+              visit_link(a);
+            }
+            else if(p.parent().hasClass("wiki")){
+              var a = "https://en.wikipedia.org/wiki/"+r;
+              visit_link(a);
+            }
+            else{
+              run_terminal(r);
+            }
+          }else{
+            var a = p.attr('desktop');
+            Utils.run_desktop(a);
+          }
         }
        
         firstCond();
@@ -127,17 +129,27 @@
 							$(list).fadeIn();
 							
 							unselect();
-											
 							$(list).find('a span:visible').first().addClass('active');
 							$(list).find(".active").parent().parent().addClass('selected');
-							
-						}, 500);
+
+              //runin
+              $(".runin-item").remove();
+              if(isUrlValid(filter)){
+                var runin_url = $("<div class='ui-listview-item runin-item url'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Open URL: "+filter+"</span></a>");
+                $(list).append(runin_url);
+              }else{
+                var runin_command = $("<div class='ui-listview-item runin-item command'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Run: "+filter+"</span></a>");
+                var runin_search = $("<div class='ui-listview-item runin-item search'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Google: "+filter+"</span></a>");
+                var runin_wiki = $("<div class='ui-listview-item runin-item wiki'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Wikipedia: "+filter+"</span></a>");
+                $(list).append(runin_command).append(runin_search).append(runin_wiki);
+              }
+						}, 500)();
 					} else {
+            $(".runin-item").remove();
 						$(list).find(".ui-listview-item").hide();
 					}
 					return false;
 			}
-		    
 		    if (!$active.length) {
 		        $item.first().addClass('active');
 		        return;
