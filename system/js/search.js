@@ -135,12 +135,12 @@
               //runin
               $(".runin-item").remove();
               if(isUrlValid(filter)){
-                var runin_url = $("<div class='ui-listview-item runin-item url'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Open URL: "+filter+"</span></a>");
+                var runin_url = $("<div class='ui-listview-item runin-item url'><a href='#' class='runin-item-text' runin='"+filter+"'><img src='img/logo_globe.png'><span>Open URL: "+filter+"</span></a>");
                 $(list).append(runin_url);
               }else{
-                var runin_command = $("<div class='ui-listview-item runin-item command'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Run: "+filter+"</span></a>");
-                var runin_search = $("<div class='ui-listview-item runin-item search'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Google: "+filter+"</span></a>");
-                var runin_wiki = $("<div class='ui-listview-item runin-item wiki'><a href='#' class='runin-item-text' runin='"+filter+"'><span>Wikipedia: "+filter+"</span></a>");
+                var runin_command = $("<div class='ui-listview-item runin-item command'><a href='#' class='runin-item-text' runin='"+filter+"'><img src='img/logo_command.png'><span>Run: "+filter+"</span></a>");
+                var runin_search = $("<div class='ui-listview-item runin-item search'><a href='#' class='runin-item-text' runin='"+filter+"'><img src='img/logo_google.png'><span>Search: "+filter+"</span></a>");
+                var runin_wiki = $("<div class='ui-listview-item runin-item wiki'><a href='#' class='runin-item-text' runin='"+filter+"'><img src='img/logo_wikipedia.png'><span>Wikipedia: "+filter+"</span></a>");
                 $(list).append(runin_command).append(runin_search).append(runin_wiki);
               }
 						}, 500)();
