@@ -132,44 +132,47 @@
               $(list).find('a span:visible').first().addClass('active');
               $(list).find(".active").parent().parent().addClass('selected');
 
-              //runin
-              $(".runin-item").remove();
-              if ( isUrlValid(filter) ) {
+              clearTimeout(typingTimeout);
+              typingTimeout = setTimeout(function() {
+                //runin
+                $(list).find(".runin-item").remove();
+                if ( isUrlValid(filter) ) {
 
-                var runin_url = $("<div>").attr({"class" : "ui-listview runin-item url" }),
-                    runin_url_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
-                    runin_url_img = $("<img>").attr({"src" : "img/logo_globe.png" }),
-                    runin_url_span = $("<span>").text("Open URL: " + filter );
-              
-                $(runin_url_a).append(runin_url_img).append(runin_url_span);
-                $(runin_url).append(runin_url_a).appendTo(list);
-              } else {
-                var runin_command = $("<div>").attr({"class" : "ui-listview runin-item command" }),
-                    runin_command_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
-                    runin_command_img = $("<img>").attr({"src" : "img/logo_command.png" }),
-                    runin_command_span = $("<span>").text("Run : " + filter );
-
-                var runin_search = $("<div>").attr({"class" : "ui-listview runin-item search" }),
-                    runin_search_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
-                    runin_search_img = $("<img>").attr({"src" : "img/logo_google.png" }),
-                    runin_search_span = $("<span>").text("Search : " + filter );
-
-                var runin_wiki = $("<div>").attr({"class" : "ui-listview runin-item wiki" }),
-                    runin_wiki_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
-                    runin_wiki_img = $("<img>").attr({"src" : "img/logo_wikipedia.png" }),
-                    runin_wiki_span = $("<span>").text("Wikipedia: " + filter );
-
-                $(runin_command_a).append(runin_command_img).append(runin_command_span);
-                $(runin_command).append(runin_command_a).appendTo(list);
-
-                $(runin_search_a).append(runin_search_img).append(runin_search_span);
-                $(runin_search).append(runin_search_a).appendTo(list);
-
-                $(runin_wiki_a).append(runin_wiki_img).append(runin_wiki_span);
-                $(runin_wiki).append(runin_wiki_a).appendTo(list);
+                  var runin_url = $("<div>").attr({"class" : "ui-listview runin-item url" }),
+                      runin_url_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
+                      runin_url_img = $("<img>").attr({"src" : "img/logo_globe.png" }),
+                      runin_url_span = $("<span>").text("Open URL: " + filter );
                 
-              }
-            }, 500)();
+                  $(runin_url_a).append(runin_url_img).append(runin_url_span);
+                  $(runin_url).append(runin_url_a).appendTo(list);
+                } else {
+                  var runin_command = $("<div>").attr({"class" : "ui-listview runin-item command" }),
+                      runin_command_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
+                      runin_command_img = $("<img>").attr({"src" : "img/logo_command.png" }),
+                      runin_command_span = $("<span>").text("Run : " + filter );
+
+                  var runin_search = $("<div>").attr({"class" : "ui-listview runin-item search" }),
+                      runin_search_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
+                      runin_search_img = $("<img>").attr({"src" : "img/logo_google.png" }),
+                      runin_search_span = $("<span>").text("Search : " + filter );
+
+                  var runin_wiki = $("<div>").attr({"class" : "ui-listview runin-item wiki" }),
+                      runin_wiki_a = $("<a>").attr({"class" : "runin-item-text" , "runin" : filter }),
+                      runin_wiki_img = $("<img>").attr({"src" : "img/logo_wikipedia.png" }),
+                      runin_wiki_span = $("<span>").text("Wikipedia: " + filter );
+
+                  $(runin_command_a).append(runin_command_img).append(runin_command_span);
+                  $(runin_command).append(runin_command_a).appendTo(list);
+
+                  $(runin_search_a).append(runin_search_img).append(runin_search_span);
+                  $(runin_search).append(runin_search_a).appendTo(list);
+
+                  $(runin_wiki_a).append(runin_wiki_img).append(runin_wiki_span);
+                  $(runin_wiki).append(runin_wiki_a).appendTo(list);
+                  
+                }
+              }, 500)();
+            }, 1000)();
           } else {
             $(".runin-item").remove();
             $(list).find(".ui-listview-item").hide();
